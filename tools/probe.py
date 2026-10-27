@@ -821,7 +821,7 @@ def main():
     utm.add_argument("--json", action="store_true")
     utm.set_defaults(func=cmd_team_matches)
 
-    rk = sub.add_parser("rank", help="5E 世界排名（POST）")
+    rk = sub.add_parser("rank", help="HLTV 世界排名 / Valve VRS（POST）")
     rk.add_argument("--region", default="", help="欧洲 / 亚洲 / 美洲，留空为全球")
     rk.add_argument("--page", type=int, default=1)
     rk.add_argument("--json", action="store_true")
