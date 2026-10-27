@@ -51,7 +51,7 @@ curl -s -X POST 'https://app.5eplay.com/api/csgo/tournament/csgo_event_list_v1' 
 ```
 
 ```bash
-# 世界排名（必须 POST，GET 会 404）
+# 世界排名（必须 POST，GET 会 404）—— rank=HLTV 积分榜，valve_rank=VRS
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_list' \
   -H 'Content-Type: application/json' \
   -d '{"sort_value":"desc","rank_type":"rank","sort_key":"rank","region":"",
