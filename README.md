@@ -9,14 +9,15 @@
 
 ## 这是什么
 
-[5E 对战平台](https://www.5eplay.com) 的赛事页 `https://event.5eplay.com/csgo/matches` 提供了相当完整的 CS2 赛事数据：
+[5E 对战平台](https://www.5eplay.com) 的赛事页 `https://event.5eplay.com/csgo/*` 提供了相当完整的 CS2 赛事数据。本项目覆盖它的**四个主菜单**：
 
-- 比赛列表（进行中 / 未开始 / 已结束，可按赛事筛选）
-- **每张地图的详细比分**（13:11 这种，不是只有 2:1 的大比分）
-- **每张地图的选手数据**（击杀 / 死亡 / 助攻 / Rating / ADR / KAST / 爆头率 / 首杀 …）
-- **逐回合流水**（每回合谁赢、比分怎么走、击杀事件）
-- 赛事信息（奖金、地点、等级、参赛队伍、赛程树）
-- 队伍 / 选手资料
+| 菜单 | 能拿到什么 |
+| --- | --- |
+| `/csgo/matches` 比赛 | 比赛列表（未开始/直播/已结束）、**每图详细比分**（19:16 含两次加时）、**每图每队 5 名选手完整数据**（kill/death/rating/adr/kast/…）、**逐回合流水**、**完整 ban/pick 序列**、赛前分析、实时推送（MQTT） |
+| `/csgo/events` 赛事 | 赛事列表（可翻页）、赛事详情、**赛程对阵图**（含服务端算好的节点坐标）、**奖金分配**、赛程/赛果列表（可翻页）、参赛队伍 / 选手 / 地图三套维度统计（78 个选手字段） |
+| `/csgo/teams` 队伍 | 队伍搜索、队伍榜单（20+ 统计字段可排序）、队伍详情、荣誉墙、**近期比赛**（`status=past`）、地图池与地图三块总览、选手名单 |
+| `/csgo/player` 选手 | 选手搜索、Rating 榜 / 总奖金榜、**任意指标排序的自定义榜**、选手详情（生涯 + 外设配置）、地图/武器/残局三套统计、**近期比赛（可翻页+按赛事/地图/等级筛）**、同位置百分位对比 |
+| 世界排名 | **5E 世界排名**（328 队）与 **Valve VRS**（377 队），支持按地区筛选 |
 
 这些数据网页上都渲染了，只是没公开文档。本项目把接口整理出来，方便写客户端、做数据看板、喂给 AI agent。
 
@@ -29,9 +30,24 @@ curl -s 'https://esports-data.5eplaycdn.com/v1/api/csgo/matches?page=1&limit=20&
 ```
 
 ```bash
-# 某场比赛的完整数据（每图比分 + 选手数据）
+# 某场比赛的完整数据（每图比分 + 选手数据 + ban/pick）
 curl -s 'https://esports-data.5eplaycdn.com/v1/api/csgo/matches/csgo_mc_2399921/data' \
   | python -m json.tool | head -100
+```
+
+```bash
+# 赛事列表（注意：POST 到 app.5eplay.com，不是 GET 到 esports-data）
+curl -s -X POST 'https://app.5eplay.com/api/csgo/tournament/csgo_event_list_v1' \
+  -H 'Content-Type: application/json' \
+  -d '{"tournaments_options":{"cursor":"","page_token":"","grade":[],"tt_series":[],"tt_bonus":[]}}'
+```
+
+```bash
+# 世界排名（必须 POST，GET 会 404）
+curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_list' \
+  -H 'Content-Type: application/json' \
+  -d '{"sort_value":"desc","rank_type":"rank","sort_key":"rank","region":"",
+       "team_options":{"page":1}}'
 ```
 
 所有接口返回统一信封：
@@ -42,12 +58,16 @@ curl -s 'https://esports-data.5eplaycdn.com/v1/api/csgo/matches/csgo_mc_2399921/
 
 失败时 `success:false`，`message` 里通常有中文错误（如 `参数错误`、`404 page not found`）。
 
+> ⚠️ **两个必读的坑**
+> 1. `mfilter/*`、`new/rank/*`、`tournaments/{team,player,map}_data` 这些**全是 POST**。用 GET 调会返回 `404 page not found`（不是 405），很容易误判成路径不存在。
+> 2. `POST` 必须带 `Content-Type: application/json`，body 是 JSON 字符串，否则静默失败。
+
 ## 三个域名
 
 | 域名 | 用途 |
 | --- | --- |
-| `https://esports-data.5eplaycdn.com` | 主要数据接口（`/v1/api/csgo/...`） |
-| `https://app.5eplay.com` | 补充接口（`/api/score/...`，整场选手汇总） |
+| `https://esports-data.5eplaycdn.com` | 主要数据接口（`/v1/api/csgo/...`），含比赛、队伍、选手、排名、统计 |
+| `https://app.5eplay.com` | 补充接口：**赛事列表**（`/api/csgo/tournament/csgo_event_list_v1`）与整场选手汇总（`/api/score/...`） |
 | `https://oss.5eplay.com` | 静态资源：队伍 / 赛事 / 地图 / 选手头像 |
 
 > 从中国大陆以外的网络访问时，`esports-data.5eplaycdn.com` 可能需要代理才能连通；`app.5eplay.com` 与 `oss.5eplay.com` 通常直连可达。实测在智能手表（Android 8.1）上三个域名均直连 200。
@@ -56,17 +76,66 @@ curl -s 'https://esports-data.5eplaycdn.com/v1/api/csgo/matches/csgo_mc_2399921/
 
 | 文件 | 内容 |
 | --- | --- |
-| [docs/endpoints.md](docs/endpoints.md) | 全部已知接口，含参数、curl 示例、真实返回片段 |
-| [docs/fields.md](docs/fields.md) | 字段速查表：比赛 / 地图 / 选手 / 赛事 / 队伍 |
+| [docs/endpoints.md](docs/endpoints.md) | 全部已知接口（2400+ 行），含参数、curl 示例、真实返回片段 |
+| [docs/fields.md](docs/fields.md) | 字段速查表：比赛 / 地图 / 选手 / 赛事 / 队伍 / 排名 |
 | [docs/reverse-engineering.md](docs/reverse-engineering.md) | 怎么找到这些接口的（方法论，方便你继续挖） |
 | [docs/known-issues.md](docs/known-issues.md) | 已知死路、未解之谜、待补参数 |
+
+### 按页面找接口
+
+`docs/endpoints.md` 第 10 章有「四个菜单 → 接口」的完整对照表，直接按你想做的页面查。
+
+| 你想做… | 看这一节 |
+| --- | --- |
+| 比赛列表页 | 1. 比赛列表（[endpoints.md](docs/endpoints.md) §1） |
+| 比赛详情 / 比分板 | 2. 比赛详情（[endpoints.md](docs/endpoints.md) §2） |
+| 实时比分（比赛进行中） | 2.6 MQTT over WSS（[endpoints.md](docs/endpoints.md) §2.6） |
+| 逐回合回放 | 3. 逐回合流水（[endpoints.md](docs/endpoints.md) §3） |
+| 赛事列表页 | 5.1 赛事列表（[endpoints.md](docs/endpoints.md) §5.1） |
+| 赛事详情 / 对阵图 | 5.2（[endpoints.md](docs/endpoints.md) §5.2） / 5.3（[endpoints.md](docs/endpoints.md) §5.3） |
+| 赛事奖金分配 | 5.1quater（[endpoints.md](docs/endpoints.md) §5.1quater） |
+| 赛事赛程 / 赛果列表 | 5.6（[endpoints.md](docs/endpoints.md) §5.6） |
+| 队伍详情页 | 6.5（[endpoints.md](docs/endpoints.md) §6.5） / 6.7（[endpoints.md](docs/endpoints.md) §6.7） |
+| 队伍近期比赛 | 6.3（[endpoints.md](docs/endpoints.md) §6.3） |
+| 队伍地图总览 | 6.9（[endpoints.md](docs/endpoints.md) §6.9） |
+| 选手详情页 | 7.3 选手详情（[endpoints.md](docs/endpoints.md) §7.3） |
+| 选手数据 tab | 7.4（[endpoints.md](docs/endpoints.md) §7.4） |
+| 选手近期比赛 | 7.9（[endpoints.md](docs/endpoints.md) §7.9） |
+| 自定义指标排行（按 ADR/KAST 等排序） | 7.10（[endpoints.md](docs/endpoints.md) §7.10） |
+| 世界排名 / VRS | 8. 世界排名（[endpoints.md](docs/endpoints.md) §8） |
+| 赛事内队/选手/地图统计 | 9. 赛事维度统计（[endpoints.md](docs/endpoints.md) §9） |
 
 ## 示例脚本
 
 ```bash
-python tools/probe.py matches --status 1          # 列出进行中的比赛
-python tools/probe.py detail csgo_mc_2399921      # 拉一场比赛的完整数据
-python tools/probe.py rounds csgo_mc_2399921      # 逐回合流水
+# —— 比赛 ——
+python tools/probe.py matches --status 1              # 列出进行中的比赛
+python tools/probe.py detail csgo_mc_2399921          # 一场比赛的完整数据
+python tools/probe.py rounds csgo_mc_2399921          # 逐回合流水
+
+# —— 赛事 ——
+python tools/probe.py events                          # 赛事列表（POST app.5eplay.com）
+python tools/probe.py tournament csgo_tt_8251         # 赛事详情
+python tools/probe.py tt-prize csgo_tt_8251           # 奖金分配
+python tools/probe.py sessions csgo_tt_8251         # 赛程（加 --result 看赛果）
+python tools/probe.py tt-data csgo_tt_9440            # 赛事内队/选手/地图统计
+python tools/probe.py tt-stats csgo_tt_8050           # 同上，走 mfilter 的完整版
+
+# —— 队伍 ——
+python tools/probe.py team csgo_tm_9565               # 队伍详情
+python tools/probe.py team-matches csgo_tm_4494       # 队伍近期比赛
+python tools/probe.py team-stats csgo_tm_9565         # 队伍数据统计
+python tools/probe.py team-map csgo_tm_9565           # 地图池 + 三块地图总览
+python tools/probe.py teams --limit 10                # 队伍榜单
+
+# —— 选手 ——
+python tools/probe.py player csgo_pl_11893            # 选手详情
+python tools/probe.py player-matches csgo_pl_11893    # 选手近期比赛
+python tools/probe.py player-top --sort-key adr       # 任意指标排行
+
+# —— 排名 ——
+python tools/probe.py rank                            # 5E 世界排名
+python tools/probe.py vrs                             # Valve VRS 榜
 ```
 
 需要代理时：

@@ -7,3 +7,8 @@ chunks/
 # 抓下来的原始响应（体积大，可自行复现）
 raw/
 *.raw.json
+
+# Python 缓存
+tools/__pycache__/
+__pycache__/
+*.pyc

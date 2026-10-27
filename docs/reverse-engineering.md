@@ -94,6 +94,56 @@ l = { tt_ids: t, game_status: n, limit: 20, page: 1 }
 
 这条报错信息量很大：它告诉我们后端是 **Go**（`strconv.ParseInt`），并且 `status` 是枚举整数，不是字符串。换 `status=1` 就通了。
 
+### 5.1 判断是 GET 还是 POST —— 本项目最大的坑
+
+**`/v1/api/csgo/mfilter/*`、`/new/rank/*`、`/tournaments/{team,player,map}_data` 全都是 POST。**
+用 GET 打会返回 `404 page not found` —— **不是 405**，所以极容易被误判成「这个路径不存在」，然后写进死路表。我们为此浪费了很久。
+
+从 chunk 里区分它们的方法：不要只看 `url:`，要看**同一个 axios 调用块里的第二个参数**。
+
+```js
+// GET：第二个参数是 { params: ... }（或者根本没有第二个参数，参数拼在 url 上）
+instance.get("/v1/api/csgo/matches".concat(eA(l)))
+
+// POST：第二个参数直接就是 body 对象，且通常能看到 { dimension, sort_key, xxx_options }
+instance.post("/v1/api/csgo/mfilter/player/list", {
+  dimension: t, sort_value: "desc", sort_key: n,
+  player_options: { tt_ids: [], time_type: "", page: 1 }
+})
+```
+
+更稳的办法是**搜接口名前面的方法名**：
+
+```python
+import re, pathlib
+# 抓出所有 xxx.get(...) / xxx.post(...) 里的第一个字符串字面量路径
+pat = re.compile(r'\.(get|post|put|delete)\(\s*["\'](/v1/api/[^"\']+)')
+for f in pathlib.Path('chunks').glob('*.js'):
+    src = f.read_text('utf-8', errors='replace')
+    for m in pat.finditer(src):
+        print(m.group(1).upper(), m.group(2))
+```
+
+如果只搜到路径、搜不到方法（被压缩合并了），**就两条都试**：`GET` 一次、`POST {}` 一次，看哪个不是 404。
+
+> POST 还有个要求：必须带 `Content-Type: application/json`，body 是 JSON。
+> body 里那些 `xxx_options` 的内层键名（`tt_ids` 是数组不是字符串、`page` 在内层）也要从 chunk 里的默认值对象抄，瞎猜会被静默拒绝。
+
+### 5.2 报错信息就是文档
+
+后端的报错相当直白，善用它们来倒推参数：
+
+| 返回 `message` | 含义 |
+| --- | --- |
+| `维度不能为空` | 缺 `dimension` |
+| `排序字段不能为空` | 缺 `sort_key` |
+| `参数排序错误` | `dimension` + `sort_key` 组合不合法（只有固定几组） |
+| `请传赛事id` / `tt_id不能为空` | 内层键名写错，要 `tt_ids` 数组 |
+| `strconv.ParseInt: parsing "x": invalid syntax` | 该参数期望数字，你传了字符串 |
+
+拿到这些提示后，把候选值排成笛卡尔积批量试，比读代码快得多。
+
+
 ## 6. 验证 ID 关系
 
 三个 ID 前缀，从返回里推断：
@@ -130,14 +180,32 @@ l = { tt_ids: t, game_status: n, limit: 20, page: 1 }
 
 ## 9. 工具
 
-写了个 `tools/probe.py` 封装了上述流程，改 URL 就能复用到别的站点：
+写了个 `tools/probe.py` 封装了上述流程，改 URL 就能复用到别的站点。它同时支持 GET 和 POST：
 
 ```bash
 python tools/probe.py matches --status 1
 python tools/probe.py detail csgo_mc_2399921 --raw
+python tools/probe.py rank                       # POST /new/rank/team_list
+python tools/probe.py events                     # POST app.5eplay.com
+python tools/probe.py raw --body '{"a":1}' /v1/api/csgo/mfilter/team/list   # 任意 POST
 ```
 
-## 10. 合规提醒
+`--body` 给了就用 POST，不给就 GET —— 排查新接口时最顺手。
+
+## 10. 实时推送（MQTT）怎么发现的
+
+比赛详情 `/matches/{id}/data` 的响应里有个 `eplus_realtime_topic` 字段，长得像 `eplus/realtime/csgo/mc/csgo_mc_2399921`。**接口返回自己的推送 topic** —— 看到这种字段就去搜 `mqtt`、`wss`、`topic`：
+
+```bash
+grep -o 'wss://[^"'"'"']*' chunks/*.js | sort -u
+grep -o 'mqtt[^,;)]\{0,60\}' chunks/*.js | sort -u
+```
+
+能挖到 broker 地址和 `clientId` 的生成规则。握手细节见 [endpoints.md 2.6](endpoints.md)（§2.6）。
+
+> 经验：**凡是响应里出现 `topic` / `channel` / `ver` / `cursor` 这类字段，都说明还有一条推送或增量通道没找。** 顺着字段名去 chunk 里搜，命中率很高。
+
+## 11. 合规提醒
 
 - 只读公开接口，不做写操作
 - 控制频率，建议 ≥1s/请求

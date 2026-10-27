@@ -126,6 +126,85 @@
 | K/D | `items[].kd` | `1.07` |
 | 地图数 | `items[].map_count` | `2073` |
 
+队伍详情（`/teams/{id}/overview` 的 `basic_info`）：
+
+| 用途 | 字段 | 示例 |
+| --- | --- | --- |
+| ID / 名 / 简称 | `id` / `disp_name` / `disp_abbr` | `csgo_tm_9565` / `Vitality` / `Vitality` |
+| Logo | `logo` | `https://...png` |
+| 国家 / 国旗 | `country_name` / `country_logo` | `欧盟` / `https://...png` |
+| 教练 | `coach` | `XTQZZZ` |
+| 总奖金 | `bonus` | `$10,373,593` |
+| 平均年龄 | `average_player_age` | `28` |
+
+## 选手
+
+| 用途 | 字段（`basic_info`） | 示例 |
+| --- | --- | --- |
+| ID / 名 | `id` / `name` | `csgo_pl_11893` / `ZywOo` |
+| 头像 | `portrait` / `half_portrait` | `https://...png` |
+| 国家 | `country_zh` / `country_en` / `country_logo` | `法国` / `France` / url |
+| 生日 / 星座 | `birthday` / `constellation` | `2000-11-09` / url |
+| 位置 | `positions[]` | `["步枪手","狙击手"]`（`position` 单值为空，用数组） |
+| 队伍 | `team_id` / `team_name` / `team_logo` | `csgo_tm_9565` / `Vitality` |
+| 总奖金 | `bonus` | `$1,893,960` |
+| Top20 次数 | `top20_num` | `7` |
+
+选手生涯数据（`player_data`，26 个键里常用的）：
+
+| 用途 | 字段 | 示例 |
+| --- | --- | --- |
+| Rating | `rating` | `1.36` |
+| K/D | `kd` | `1.41` |
+| 每回合击杀/死亡 | `kpr` / `dpr` | `0.84` / `0.6` |
+| ADR | `adr` | `87.3` |
+| Impact | `impact` | `0.95` |
+| KAST | `kast` | `76.3` |
+| 爆头率 | `head_shot` | `41.2` |
+| 地图数 / 回合数 | `maps_played` / `rounds_played` | `1727` / `43019` |
+| 分图数据 | `maps[]` | `{name, rating, kd, use_num}` |
+| 武器数据 | `weapons[]` | `{name, rate, logo}` |
+| 外设 | `player_profile.player_config` | `mouse_config` / `monitor_config` |
+
+## 世界排名
+
+`POST /v1/api/csgo/new/rank/team_list` 的 `field_values`：
+
+| 用途 | 字段 | 示例 |
+| --- | --- | --- |
+| 名次 | `rank` / `global_rank` | `1` |
+| 积分 | `point` / `score` | `904`（两者相同，取 `point`） |
+| 名次变化 | `rank_change` / `rank_diff` | `"-"`（字符串，无变化时是横杠） |
+| 分区 | `region_name` | `欧洲` |
+| 击杀差 | `kd_diff` | `11214` |
+
+> 其余 `avg_kill` / `rating` / `ct_win_rate` 等字段在默认 body 下**全是空字符串**，只有加 `time_type`/`time_value` 过滤才会填。别当 0 排序。
+
+## 赛事维度统计（`tournaments/{team,player,map}_data`）
+
+三个接口共用 `field_values` 扁平结构，字段数：
+
+| 接口 | 条数示例 | `field_values` 字段数 |
+| --- | --- | --- |
+| `team_data`（`csgo_tt_8050`） | 16 支队伍 | **40** |
+| `player_data`（`csgo_tt_8050`） | 81 名选手 | **78** |
+| `map_data`（`csgo_tt_8050`） | 7 张地图 | 17 |
+
+常用：
+
+| 用途 | 字段 | 所在 |
+| --- | --- | --- |
+| 半场胜率 | `sh_rate` / `fh_rate` | team |
+| 手枪局胜率 | `sh_pistol_win_rate` / `fh_pistol_win_rate` / `pistol_win_rate` | team |
+| 先到 5/10 分胜率 | `flag5_win_rate` / `flag10_win_rate` | team |
+| 落后翻盘 | `inferior_position_win` / `inferior_position_max_core` | team |
+| 0~5 杀回合 | `zero_kill_round` ~ `five_kill_round` + `*_rate` | player |
+| 残局 | `one_vs_one_kills` ~ `one_vs_five_kills` + `*_win_rate` | player |
+| 单场极值 | `max_adr` / `max_rating` / `min_rating` … | player |
+| 被选率 / 被 ban | `pick_rate` / `ban_count` | map |
+| 加时率 | `ot_rate` / `total_ot` | map |
+| **地图最强队** | `fortissimo_team_id` / `fortissimo_team_win_rate` | map |
+
 ---
 
 ## 解析注意事项
@@ -134,8 +213,15 @@
 2. **时间戳有两种格式**：
    - `plan_ts` = 秒级时间戳字符串（如 `"1794315000"`）
    - `start_time` / `end_time` = `"2026-11-09 00:00:00"`（本地时间，无时区标记，按 UTC+8 处理）
+   - ⚠️ `team/matches_v1` 用的是 `ts`，**不是 `plan_ts`**
 3. **`log_info` 是二次转义 JSON**，需要 `JSON.parse(JSON.parse(x).log_info)`。
 4. **`graph` 也是 JSON 字符串**（在 `stages` 接口里）。
-5. **`t1` / `t2` 的语义**：始终对应 `mc_info.t1_info` / `t2_info`，页面上"主队 vs 客队"的位置。CSS 上不一定真的在主队位置。
+5. **`t1` / `t2` 的语义**：在 `/matches` 与 `/matches/{id}/data` 里始终对应 `mc_info.t1_info` / `t2_info`，页面上"主队 vs 客队"的位置。
+   ⚠️ **但 `team/matches_v1` 是例外**：它用 `home_info` / `opponent_info`，`home_info` 恒为被查询队伍，且没有 `t1_info`/`t2_info`。那里的 `t1_score`/`t2_score` 与 `home_score`/`opponent_score` **不保证对应**，一律用 `home_*` / `opponent_*`。
 6. **`bouts_state` 里未开始的地图 `t1_stats` 可能是空对象**，判空再读 `quick_score`。
 7. **`status` 都是字符串**，`"2"` 不是 `2`。腾讯系接口习惯。
+8. **`mfilter/*`、`new/rank/*`、`tournaments/{team,player,map}_data` 全是 POST**。用 GET 打会返回 `404 page not found`（不是 405），别误判成路径不存在。
+9. **`tournaments/{team,player,map}_data` 的 `total_rows` 恒为 0**，不分页，一次全给。用 `len(items)`。
+10. **`player/stats` 里数值类型混杂**：`map_stats.total` 是数字、`player_data.kd` 也是数字，但别处都是字符串。别统一当字符串处理。
+11. **`player_performance` 的 `range` 是反的**：`start` > `end`，判断用 `end <= v <= start`。
+12. **搜索结果的 `highlight_name` 带 `<SF-HL>` 高亮标签**，展示前要剥掉。
