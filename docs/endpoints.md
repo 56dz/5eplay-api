@@ -1196,11 +1196,11 @@ GET /v1/api/csgo/team/matches_v1/{team_id}?page=1&limit=20&status=past
 
 ```bash
 # 历史比赛（MOUZ，共 1613 场）
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/team/matches_v1/csgo_tm_4494?page=1&limit=5&status=past'
 
 # 未来赛程
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/team/matches_v1/csgo_tm_4494?page=1&limit=5&status=upcoming'
 ```
 
@@ -1371,7 +1371,7 @@ Content-Type: application/json
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/team/list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"dimension":"top","sort_value":"desc","sort_key":"rating",
        "team_options":{"tt_ids":[],"time_value":"","grade":[],"team_id":"",
        "time_type":"","tt_series":[],"maps":[],"page":1}}'
@@ -1413,7 +1413,7 @@ Content-Type: application/json
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/team/data/details' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"team_options":{"team_id":"csgo_tm_9565","time_type":"recent",
        "time_value":"2026-07-27 00:00:00_2026-10-27 23:59:59"}}'
 ```
@@ -1471,7 +1471,7 @@ GET /v1/api/csgo/mfilter/team_player/options
 ```
 
 ```bash
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/team/options?team_id=csgo_tm_9565&page_source=team'
 ```
 
@@ -1512,7 +1512,7 @@ Content-Type: application/json
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/team/data/map/all' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"team_options":{"time_value":"2026-07-27 00:00:00_2026-10-27 23:59:59",
        "team_id":"csgo_tm_9565","time_type":"recent","tt_series":[],"tt_ids":[],
        "maps":[],"grade":[],"page":1},"sort_key":""}'
@@ -1567,7 +1567,7 @@ GET /v1/api/csgo/players?name=zywoo&page=1&limit=5
 ```
 
 ```bash
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/players?name=zywoo&page=1&limit=5'
 ```
 
@@ -1609,14 +1609,14 @@ POST /v1/api/csgo/mfilter/player/list
 ```bash
 # Rating 榜
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/player/list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"dimension":"top","sort_value":"desc","sort_key":"rating",
        "player_options":{"tt_ids":[],"time_value":"","grade":[],"player_id":"",
        "time_type":"","tt_series":[],"maps":[],"page":1}}'
 
 # 总奖金榜
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/player/list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"dimension":"earning","sort_value":"desc","sort_key":"total_earnings",
        "player_options":{"tt_ids":[],"time_value":"","grade":[],"player_id":"",
        "time_type":"","tt_series":[],"maps":[],"page":1}}'
@@ -1653,7 +1653,7 @@ GET /v1/api/csgo/players/{player_id}
 ```
 
 ```bash
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/players/csgo_pl_11893'
 ```
 
@@ -1727,7 +1727,7 @@ POST /v1/api/csgo/mfilter/player/stats
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/player/stats' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"player_options":{"player_id":"csgo_pl_11893","time_type":"","time_value":"",
        "tt_ids":[],"maps":[],"grade":[],"page":1}}'
 ```
@@ -1878,7 +1878,7 @@ Content-Type: application/json
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/player/match/list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"player_options":{"player_id":"csgo_pl_11893","time_type":"recent",
        "time_value":"2026-07-27 00:00:00_2026-10-27 23:59:59",
        "tt_ids":[],"maps":[],"grade":[],"page":1}}'
@@ -1948,7 +1948,7 @@ POST /v1/api/csgo/mfilter/player/multidimension/list
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/player/multidimension/list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"player_options":{"player_id":"","time_type":"recent",
        "time_value":"2026-07-27 00:00:00_2026-10-27 23:59:59","tt_ids":[],"maps":[],
        "recent_match":"","grade":[],"page":1,"team_id":""},
@@ -1998,7 +1998,7 @@ GET /v1/api/csgo/player/tt/{player_id}
 ```
 
 ```bash
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/player/tt/csgo_pl_11893'
 ```
 
@@ -2096,14 +2096,14 @@ Content-Type: application/json
 ```bash
 # 5E 世界排名
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"sort_value":"desc","rank_type":"rank","sort_key":"rank","region":"",
        "team_options":{"tt_ids":[],"time_value":"","grade":[],"team_id":"",
        "time_type":"","tt_series":[],"maps":[],"page":1}}'
 
 # Valve VRS 榜
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"sort_value":"desc","rank_type":"valve_rank","sort_key":"valve_rank","region":"",
        "team_options":{"tt_ids":[],"time_value":"","grade":[],"team_id":"",
        "time_type":"","tt_series":[],"maps":[],"page":1}}'
@@ -2183,7 +2183,7 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/tournaments/team_data' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"team_options":{"tt_ids":["csgo_tt_8050"],"page":1}}'
 ```
 
@@ -2341,7 +2341,7 @@ GET /v1/api/csgo/tournaments/match_list?tt_ids=csgo_tt_8050
 ```
 
 ```bash
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/tournaments/match_list?tt_ids=csgo_tt_8050'
 ```
 
@@ -2356,7 +2356,7 @@ GET /v1/api/csgo/tournaments/{tt_id}/data?type={1|2|3}
 ```
 
 ```bash
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/tournaments/csgo_tt_9440/data?type=2'
 ```
 

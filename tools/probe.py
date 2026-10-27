@@ -2,7 +2,7 @@
 """
 5eplay CS2 API 命令行探针 / 示例客户端。
 
-只依赖 Python 标准库（3.8+）。可直连，也可走代理。
+只依赖 Python 标准库（3.8+）。默认直连；仅当你的网络需要时才用 --proxy。
 
 用法：
     python probe.py matches --status 2 --limit 5
@@ -22,9 +22,9 @@
     python probe.py raw '/v1/api/csgo/matches?page=1&limit=1'
     python probe.py raw --app --body '{"tournaments_options":{}}' /api/csgo/tournament/csgo_event_list_v1
 
-带代理：
+可选：如果你的网络环境需要代理（例如校园网屏蔽了游戏类域名）：
     python probe.py --proxy socks5h://127.0.0.1:10808 matches --status 1
-    （socks 需要 pip install pysocks；http 代理不需要额外依赖）
+    （支持 http:// / https:// / socks5:// / socks5h://；socks 需要 pip install pysocks）
 
 注意：mfilter/* 、new/rank/* 、tournaments/{team,player,map}_data 这些都是 POST。
 用 GET 打会返回 404 page not found（不是 405），别误判成路径不存在。

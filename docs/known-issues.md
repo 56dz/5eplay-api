@@ -38,7 +38,7 @@ curl -s -X POST 'https://app.5eplay.com/api/csgo/tournament/csgo_event_list_v1' 
 **结论：`status` 不是数字，是字符串 `past` / `upcoming`。** 传数字不报错、`success` 仍为 `true`，只是 `matches` 静默为空 —— 这就是一直被误导的原因。
 
 ```bash
-curl -s --socks5-hostname 127.0.0.1:10808 \
+curl -s \
   'https://esports-data.5eplaycdn.com/v1/api/csgo/team/matches_v1/csgo_tm_4494?page=1&limit=5&status=past'
 ```
 
@@ -64,7 +64,7 @@ curl -s --socks5-hostname 127.0.0.1:10808 \
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"sort_value":"desc","rank_type":"rank","sort_key":"rank","region":"",
        "team_options":{"tt_ids":[],"time_value":"","grade":[],"team_id":"",
        "time_type":"","tt_series":[],"maps":[],"page":1}}'
@@ -152,7 +152,7 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 
 ```bash
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/mfilter/player/multidimension/list' \
-  -H 'Content-Type: application/json' --socks5-hostname 127.0.0.1:10808 \
+  -H 'Content-Type: application/json' \
   -d '{"player_options":{"player_id":"","time_type":"recent",
        "time_value":"2026-07-27 00:00:00_2026-10-27 23:59:59","tt_ids":[],"maps":[],
        "recent_match":"","grade":[],"page":1,"team_id":""},

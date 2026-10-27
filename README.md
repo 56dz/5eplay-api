@@ -78,7 +78,9 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 | `https://app.5eplay.com` | 补充接口：**赛事列表**（`/api/csgo/tournament/csgo_event_list_v1`）与整场选手汇总（`/api/score/...`） |
 | `https://oss.5eplay.com` | 静态资源：队伍 / 赛事 / 地图 / 选手头像 |
 
-> 从中国大陆以外的网络访问时，`esports-data.5eplaycdn.com` 可能需要代理才能连通；`app.5eplay.com` 与 `oss.5eplay.com` 通常直连可达。实测在智能手表（Android 8.1）上三个域名均直连 200。
+> 三个域名**都不需要代理**，直连即可。实测在智能手表（Android 8.1，OPPO Watch 2）上三个域名全部直连 200，无需任何代理。
+>
+> 如果你的网络环境特殊（例如校园网屏蔽游戏类站点），需要的话再自备代理，本项目本身不依赖代理。文档里的 curl 示例一律按直连写。
 
 ## 文档
 
@@ -146,11 +148,13 @@ python tools/probe.py rank                            # 5E 世界排名
 python tools/probe.py vrs                             # Valve VRS 榜
 ```
 
-需要代理时：
+脚本默认直连。如果你的网络需要代理（例如校园网屏蔽了游戏类域名），可以用 `--proxy` 自行指定，脚本支持 `http://` / `https://` / `socks5://` / `socks5h://`（socks 需 `pip install pysocks`）：
 
 ```bash
 python tools/probe.py --proxy socks5h://127.0.0.1:10808 matches --status 2
 ```
+
+这只是给你自己的网络环境留的口子，不是必需的。
 
 ## 免责声明
 
