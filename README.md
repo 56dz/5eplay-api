@@ -1,4 +1,4 @@
-# 5eplay CS2 API 逆向笔记
+# 5eplay CS2 API 逆向
 
 > 5E 对战平台（5eplay）CS2 赛事数据的**非官方**接口文档。
 > 全部结论来自对 `https://event.5eplay.com` 前端 JS bundle 的静态分析 + 实际抓包验证。
