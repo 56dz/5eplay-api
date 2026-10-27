@@ -1,0 +1,1317 @@
+{
+  "data": {
+    "match": {
+      "bouts_state": [
+        {
+          "bomb_planted": "",
+          "bomb_planted_time": "",
+          "bout_num": "1",
+          "bp_act": "t2_pick",
+          "curr_bout_stage": "sh",
+          "curr_round_num": "18",
+          "disp_name": "第一局",
+          "display": "1",
+          "end_time": "1793088411",
+          "game_time": "0",
+          "map_icon": "https://oss.5eplay.com/cloudx/p/sport/csgo/map/clvv45cconkqks63d1r0.png",
+          "map_name": "Ancient",
+          "result": "t1",
+          "round_num": "12",
+          "round_start_time": "",
+          "start_time": "1793086459",
+          "status": "2",
+          "t1_pr_stats": [
+            {
+              "adr": "101.1",
+              "alive": "+5",
+              "assist": "7",
+              "cl_win_num": "1",
+              "counter_kill_map": {
+                "csgo_pl_24513": 3,
+                "csgo_pl_25145": 2,
+                "csgo_pl_25393": 3,
+                "csgo_pl_25906": 4,
+                "csgo_pl_26866": 5
+              },
+              "counter_kills": [
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "5",
+                  "most_kill": true,
+                  "player_id": "csgo_pl_26866"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "9",
+              "dpr": "0.50",
+              "final_victory_num": "1",
+              "first_blood_num": "6",
+              "first_blood_rate": "33.3%",
+              "first_death_num": "1",
+              "first_kill_map": {
+                "csgo_pl_24513": 0,
+                "csgo_pl_25145": 0,
+                "csgo_pl_25393": 0,
+                "csgo_pl_25906": 3,
+                "csgo_pl_26866": 3
+              },
+              "first_kills": [
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_26866"
+                }
+              ],
+              "fkdiff": "+5",
+              "flash_assist": "0",
+              "half_portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d5lq2gkconkpudhr3hcg.png",
+              "has_defusekit": "",
+              "head_shot_rate": "17.6%",
+              "headshot": "3",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_19537",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "88.9%",
+              "kd_diff": "+8",
+              "kd_rate": "1.89",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "17",
+              "kpr": "0.94",
+              "mk_rating": "1.02",
+              "money": "",
+              "more_kill": "6",
+              "name": "cool4st",
+              "portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d5lq2fkconkpudhr3hc0.png",
+              "rating": "1.70",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "+9.68%",
+              "traded_death": "2",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            },
+            {
+              "adr": "88.1",
+              "alive": "+1",
+              "assist": "8",
+              "cl_win_num": "0",
+              "counter_kill_map": {
+                "csgo_pl_24513": 2,
+                "csgo_pl_25145": 3,
+                "csgo_pl_25393": 5,
+                "csgo_pl_25906": 4,
+                "csgo_pl_26866": 2
+              },
+              "counter_kills": [
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "5",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_26866"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "10",
+              "dpr": "0.56",
+              "final_victory_num": "0",
+              "first_blood_num": "2",
+              "first_blood_rate": "11.1%",
+              "first_death_num": "1",
+              "first_kill_map": {
+                "csgo_pl_24513": 2,
+                "csgo_pl_25145": 0,
+                "csgo_pl_25393": 0,
+                "csgo_pl_25906": 0,
+                "csgo_pl_26866": 0
+              },
+              "first_kills": [
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_26866"
+                }
+              ],
+              "fkdiff": "+1",
+              "flash_assist": "0",
+              "half_portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d9benokconkpudhr56dg.png",
+              "has_defusekit": "",
+              "head_shot_rate": "62.5%",
+              "headshot": "10",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_25510",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "83.3%",
+              "kd_diff": "+6",
+              "kd_rate": "1.60",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "16",
+              "kpr": "0.89",
+              "mk_rating": "1.58",
+              "money": "",
+              "more_kill": "4",
+              "name": "tikuak",
+              "portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d9bennsconkpudhr56d0.png",
+              "rating": "1.50",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "+5.28%",
+              "traded_death": "2",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            }
+          ],
+          "t1_stats": {
+            "all_score": "13",
+            "fh_data": [
+              0,
+              0,
+              1,
+              1,
+              4,
+              4,
+              1,
+              0,
+              4,
+              5,
+              0,
+              1
+            ],
+            "fh_role": "CT",
+            "fh_score": "8",
+            "flags": [
+              "w5",
+              "w10"
+            ],
+            "id": "hltv_team_12646",
+            "ot_data": [],
+            "ot_role": "",
+            "ot_score": "",
+            "quick_score": "13",
+            "role": "T",
+            "sh_data": [
+              0,
+              2,
+              2,
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "sh_role": "T",
+            "sh_score": "5"
+          },
+          "t2_pr_stats": [
+            {
+              "adr": "72.1",
+              "alive": "+1",
+              "assist": "1",
+              "cl_win_num": "0",
+              "counter_kill_map": {
+                "csgo_pl_18638": 4,
+                "csgo_pl_19229": 3,
+                "csgo_pl_19537": 3,
+                "csgo_pl_21428": 3,
+                "csgo_pl_25510": 2
+              },
+              "counter_kills": [
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": true,
+                  "player_id": "csgo_pl_18638"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "12",
+              "dpr": "0.67",
+              "final_victory_num": "0",
+              "first_blood_num": "1",
+              "first_blood_rate": "5.6%",
+              "first_death_num": "0",
+              "first_kill_map": {
+                "csgo_pl_18638": 0,
+                "csgo_pl_19229": 0,
+                "csgo_pl_19537": 0,
+                "csgo_pl_21428": 1,
+                "csgo_pl_25510": 0
+              },
+              "first_kills": [
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "1",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_18638"
+                }
+              ],
+              "fkdiff": "+1",
+              "flash_assist": "0",
+              "half_portrait": "",
+              "has_defusekit": "",
+              "head_shot_rate": "86.7%",
+              "headshot": "13",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_25145",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "66.7%",
+              "kd_diff": "+3",
+              "kd_rate": "1.25",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "15",
+              "kpr": "0.83",
+              "mk_rating": "1.26",
+              "money": "",
+              "more_kill": "3",
+              "name": "dobo",
+              "portrait": "",
+              "rating": "1.34",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "+1.78%",
+              "traded_death": "1",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            },
+            {
+              "adr": "68.3",
+              "alive": "-3",
+              "assist": "2",
+              "cl_win_num": "0",
+              "counter_kill_map": {
+                "csgo_pl_18638": 4,
+                "csgo_pl_19229": 2,
+                "csgo_pl_19537": 2,
+                "csgo_pl_21428": 0,
+                "csgo_pl_25510": 2
+              },
+              "counter_kills": [
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_18638"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "16",
+              "dpr": "0.89",
+              "final_victory_num": "0",
+              "first_blood_num": "0",
+              "first_blood_rate": "0.0%",
+              "first_death_num": "3",
+              "first_kill_map": {
+                "csgo_pl_18638": 0,
+                "csgo_pl_19229": 0,
+                "csgo_pl_19537": 0,
+                "csgo_pl_21428": 0,
+                "csgo_pl_25510": 0
+              },
+              "first_kills": [
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_18638"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                }
+              ],
+              "fkdiff": "-3",
+              "flash_assist": "0",
+              "half_portrait": "",
+              "has_defusekit": "",
+              "head_shot_rate": "70.0%",
+              "headshot": "7",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_25906",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "72.2%",
+              "kd_diff": "-6",
+              "kd_rate": "0.62",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "10",
+              "kpr": "0.56",
+              "mk_rating": "0.41",
+              "money": "",
+              "more_kill": "2",
+              "name": "grizzly",
+              "portrait": "",
+              "rating": "0.84",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "-5.37%",
+              "traded_death": "4",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            }
+          ],
+          "t2_stats": {
+            "all_score": "5",
+            "fh_data": [
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              2,
+              0
+            ],
+            "fh_role": "T",
+            "fh_score": "4",
+            "flags": [
+              "r1",
+              "r16"
+            ],
+            "id": "hltv_team_14111",
+            "ot_data": [],
+            "ot_role": "",
+            "ot_score": "",
+            "quick_score": "5",
+            "role": "CT",
+            "sh_data": [
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "sh_role": "CT",
+            "sh_score": "1"
+          }
+        },
+        {
+          "bomb_planted": "",
+          "bomb_planted_time": "",
+          "bout_num": "2",
+          "bp_act": "t1_pick",
+          "curr_bout_stage": "sh",
+          "curr_round_num": "22",
+          "disp_name": "第二局",
+          "display": "1",
+          "end_time": "1793091503",
+          "game_time": "0",
+          "map_icon": "https://oss.5eplay.com/cloudx/p/sport/csgo/map/clvv4nsconkqks63d1s0.png",
+          "map_name": "Dust2",
+          "result": "t1",
+          "round_num": "12",
+          "round_start_time": "",
+          "start_time": "1793089247",
+          "status": "2",
+          "t1_pr_stats": [
+            {
+              "adr": "80.6",
+              "alive": "-1",
+              "assist": "8",
+              "cl_win_num": "0",
+              "counter_kill_map": {
+                "csgo_pl_24513": 4,
+                "csgo_pl_25145": 2,
+                "csgo_pl_25393": 4,
+                "csgo_pl_25906": 4,
+                "csgo_pl_26866": 4
+              },
+              "counter_kills": [
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_26866"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "10",
+              "dpr": "0.45",
+              "final_victory_num": "0",
+              "first_blood_num": "0",
+              "first_blood_rate": "0.0%",
+              "first_death_num": "1",
+              "first_kill_map": {
+                "csgo_pl_24513": 0,
+                "csgo_pl_25145": 0,
+                "csgo_pl_25393": 0,
+                "csgo_pl_25906": 0,
+                "csgo_pl_26866": 0
+              },
+              "first_kills": [
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_26866"
+                }
+              ],
+              "fkdiff": "-1",
+              "flash_assist": "5",
+              "half_portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d5lq2gkconkpudhr3hcg.png",
+              "has_defusekit": "",
+              "head_shot_rate": "38.9%",
+              "headshot": "7",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_19537",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "81.8%",
+              "kd_diff": "+8",
+              "kd_rate": "1.80",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "18",
+              "kpr": "0.82",
+              "mk_rating": "0.60",
+              "money": "",
+              "more_kill": "4",
+              "name": "cool4st",
+              "portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d5lq2fkconkpudhr3hc0.png",
+              "rating": "1.35",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "+4.96%",
+              "traded_death": "2",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            },
+            {
+              "adr": "103.4",
+              "alive": "+2",
+              "assist": "6",
+              "cl_win_num": "0",
+              "counter_kill_map": {
+                "csgo_pl_24513": 4,
+                "csgo_pl_25145": 5,
+                "csgo_pl_25393": 6,
+                "csgo_pl_25906": 2,
+                "csgo_pl_26866": 5
+              },
+              "counter_kills": [
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                },
+                {
+                  "kill": "5",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "6",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "5",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_26866"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "14",
+              "dpr": "0.64",
+              "final_victory_num": "0",
+              "first_blood_num": "2",
+              "first_blood_rate": "9.1%",
+              "first_death_num": "0",
+              "first_kill_map": {
+                "csgo_pl_24513": 0,
+                "csgo_pl_25145": 1,
+                "csgo_pl_25393": 1,
+                "csgo_pl_25906": 0,
+                "csgo_pl_26866": 0
+              },
+              "first_kills": [
+                {
+                  "kill": "1",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25145"
+                },
+                {
+                  "kill": "1",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25393"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25906"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_26866"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_24513"
+                }
+              ],
+              "fkdiff": "+2",
+              "flash_assist": "0",
+              "half_portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d9benokconkpudhr56dg.png",
+              "has_defusekit": "",
+              "head_shot_rate": "59.1%",
+              "headshot": "13",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_25510",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "86.4%",
+              "kd_diff": "+8",
+              "kd_rate": "1.57",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "22",
+              "kpr": "1.00",
+              "mk_rating": "1.34",
+              "money": "",
+              "more_kill": "7",
+              "name": "tikuak",
+              "portrait": "https://oss.5eplay.com/cloudx/p/sport/csgo/player/d9bennsconkpudhr56d0.png",
+              "rating": "1.31",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "-1.00%",
+              "traded_death": "5",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            }
+          ],
+          "t1_stats": {
+            "all_score": "13",
+            "fh_data": [
+              2,
+              2,
+              0,
+              2,
+              2,
+              2,
+              2,
+              2,
+              0,
+              2,
+              0,
+              0
+            ],
+            "fh_role": "T",
+            "fh_score": "8",
+            "flags": [
+              "r1",
+              "w5",
+              "w10"
+            ],
+            "id": "hltv_team_12646",
+            "ot_data": [],
+            "ot_role": "",
+            "ot_score": "",
+            "quick_score": "13",
+            "role": "CT",
+            "sh_data": [
+              0,
+              0,
+              4,
+              1,
+              1,
+              1,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0
+            ],
+            "sh_role": "CT",
+            "sh_score": "5"
+          },
+          "t2_pr_stats": [
+            {
+              "adr": "98.5",
+              "alive": "+1",
+              "assist": "4",
+              "cl_win_num": "0",
+              "counter_kill_map": {
+                "csgo_pl_18638": 3,
+                "csgo_pl_19229": 5,
+                "csgo_pl_19537": 3,
+                "csgo_pl_21428": 3,
+                "csgo_pl_25510": 4
+              },
+              "counter_kills": [
+                {
+                  "kill": "5",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                },
+                {
+                  "kill": "3",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_18638"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "16",
+              "dpr": "0.73",
+              "final_victory_num": "0",
+              "first_blood_num": "2",
+              "first_blood_rate": "9.1%",
+              "first_death_num": "1",
+              "first_kill_map": {
+                "csgo_pl_18638": 0,
+                "csgo_pl_19229": 1,
+                "csgo_pl_19537": 1,
+                "csgo_pl_21428": 0,
+                "csgo_pl_25510": 0
+              },
+              "first_kills": [
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_18638"
+                },
+                {
+                  "kill": "1",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                },
+                {
+                  "kill": "1",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                }
+              ],
+              "fkdiff": "+1",
+              "flash_assist": "2",
+              "half_portrait": "",
+              "has_defusekit": "",
+              "head_shot_rate": "72.2%",
+              "headshot": "13",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_25145",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "68.2%",
+              "kd_diff": "+2",
+              "kd_rate": "1.12",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "18",
+              "kpr": "0.82",
+              "mk_rating": "1.27",
+              "money": "",
+              "more_kill": "5",
+              "name": "dobo",
+              "portrait": "",
+              "rating": "1.61",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "+6.52%",
+              "traded_death": "1",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            },
+            {
+              "adr": "80.7",
+              "alive": "0",
+              "assist": "3",
+              "cl_win_num": "0",
+              "counter_kill_map": {
+                "csgo_pl_18638": 7,
+                "csgo_pl_19229": 2,
+                "csgo_pl_19537": 4,
+                "csgo_pl_21428": 4,
+                "csgo_pl_25510": 2
+              },
+              "counter_kills": [
+                {
+                  "kill": "7",
+                  "most_kill": true,
+                  "player_id": "csgo_pl_18638"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "4",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                },
+                {
+                  "kill": "2",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                }
+              ],
+              "country_logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/country/d99a27a81fcad3217b239efd6663be66.jpg",
+              "death": "18",
+              "dpr": "0.82",
+              "final_victory_num": "0",
+              "first_blood_num": "2",
+              "first_blood_rate": "9.1%",
+              "first_death_num": "2",
+              "first_kill_map": {
+                "csgo_pl_18638": 1,
+                "csgo_pl_19229": 0,
+                "csgo_pl_19537": 0,
+                "csgo_pl_21428": 1,
+                "csgo_pl_25510": 0
+              },
+              "first_kills": [
+                {
+                  "kill": "1",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_18638"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19229"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_19537"
+                },
+                {
+                  "kill": "1",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_21428"
+                },
+                {
+                  "kill": "0",
+                  "most_kill": false,
+                  "player_id": "csgo_pl_25510"
+                }
+              ],
+              "fkdiff": "0",
+              "flash_assist": "0",
+              "half_portrait": "",
+              "has_defusekit": "",
+              "head_shot_rate": "47.4%",
+              "headshot": "9",
+              "helmet": "",
+              "hp": "",
+              "id": "csgo_pl_26866",
+              "impact": "0.00",
+              "k2": "0",
+              "k3": "0",
+              "k4": "0",
+              "k5": "0",
+              "kast": "77.3%",
+              "kd_diff": "+1",
+              "kd_rate": "1.06",
+              "kdratio": "",
+              "kevlar": "",
+              "kill": "19",
+              "kpr": "0.86",
+              "mk_rating": "1.51",
+              "money": "",
+              "more_kill": "5",
+              "name": "Wexde",
+              "portrait": "",
+              "rating": "1.35",
+              "round_mvp": "0",
+              "subpackage_num": "0",
+              "swing": "+1.61%",
+              "traded_death": "6",
+              "unpack_num": "0",
+              "v1": "0",
+              "v2": "0",
+              "v3": "0",
+              "v4": "0",
+              "v5": "0",
+              "weapon": "",
+              "weapon_logo": ""
+            }
+          ],
+          "t2_stats": {
+            "all_score": "9",
+            "fh_data": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1
+            ],
+            "fh_role": "CT",
+            "fh_score": "4",
+            "flags": [
+              "r16"
+            ],
+            "id": "hltv_team_14111",
+            "ot_data": [],
+            "ot_role": "",
+            "ot_score": "",
+            "quick_score": "9",
+            "role": "T",
+            "sh_data": [
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              3,
+              3,
+              2,
+              0,
+              0,
+              0
+            ],
+            "sh_role": "T",
+            "sh_score": "5"
+          }
+        },
+        {
+          "bomb_planted": "",
+          "bomb_planted_time": "",
+          "bout_num": "3",
+          "bp_act": "left",
+          "curr_bout_stage": "",
+          "curr_round_num": "",
+          "disp_name": "第三局",
+          "display": "2",
+          "end_time": "",
+          "game_time": "0",
+          "map_icon": "https://oss.5eplay.com/cloudx/p/sport/csgo/map/clvv4u4conkqks63d1u0.png",
+          "map_name": "Inferno",
+          "result": "",
+          "round_num": "12",
+          "round_start_time": "",
+          "start_time": "",
+          "status": "-1",
+          "t1_pr_stats": [],
+          "t1_stats": {
+            "all_score": "",
+            "fh_data": [],
+            "fh_role": "",
+            "fh_score": "",
+            "flags": [],
+            "id": "",
+            "ot_data": [],
+            "ot_role": "",
+            "ot_score": "",
+            "quick_score": "",
+            "role": "",
+            "sh_data": [],
+            "sh_role": "",
+            "sh_score": ""
+          },
+          "t2_pr_stats": [],
+          "t2_stats": {
+            "all_score": "",
+            "fh_data": [],
+            "fh_role": "",
+            "fh_score": "",
+            "flags": [],
+            "id": "",
+            "ot_data": [],
+            "ot_role": "",
+            "ot_score": "",
+            "quick_score": "",
+            "role": "",
+            "sh_data": [],
+            "sh_role": "",
+            "sh_score": ""
+          }
+        }
+      ],
+      "mc_info": {
+        "field_conf": {
+          "/block/mvp": "1",
+          "/block/player_performance": "1",
+          "/block/player_stats": "1",
+          "/global": "1",
+          "bp_info": "1",
+          "counter_kill": "1",
+          "first_kill": "1",
+          "more_kill": "2",
+          "overview": "1",
+          "summary": "1"
+        },
+        "format": "3",
+        "game_type": "csgo",
+        "grade": "5",
+        "group_id": 5588,
+        "high_lights_cfg_list": [],
+        "id": "csgo_mc_2399921",
+        "live_cfg_list": [],
+        "match_version": "cs2",
+        "plan_ts": "1793086200",
+        "remark": "",
+        "star": 0,
+        "t1_info": {
+          "bonus": "",
+          "country": "",
+          "disp_name": "CW",
+          "id": "hltv_team_12646",
+          "logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/team/coqf55sconklgsjvhde0.png",
+          "rank": "62",
+          "v_rank": {
+            "change": "",
+            "rank": "52",
+            "trend": ""
+          }
+        },
+        "t2_info": {
+          "bonus": "",
+          "country": "",
+          "disp_name": "the ONE",
+          "id": "hltv_team_14111",
+          "logo": "https://oss.5eplay.com/sport/csgo/team/null.png",
+          "rank": "0",
+          "v_rank": {
+            "change": "43",
+            "rank": "320",
+            "trend": "up"
+          }
+        },
+        "tt_stage": "淘汰赛",
+        "tt_stage_desc": "淘汰赛 胜者组 首轮",
+        "video_type": 0
+      },
+      "tt_info": {
+        "addr": "Mongolia-Ulaanbaatar, Mongolia",
+        "bonus": "$3,000",
+        "color": "7983a2",
+        "disp_name": "MESA Pro 2026 万圣节杯",
+        "end_time": "",
+        "grade": "5",
+        "grade_label": "C级赛事",
+        "id": "csgo_tt_9462",
+        "logo": "https://oss.5eplay.com/cloudx/p/sport/csgo/tournament/d2o3mnkconkqbk3bnl5g.png",
+        "related_type": "",
+        "special_color": "",
+        "special_grade_label": "",
+        "start_time": "2026-10-27 00:00:00",
+        "status": "live"
+      }
+    }
+  }
+}

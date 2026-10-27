@@ -1,0 +1,9 @@
+# 5eplay 前端 chunk 缓存
+# 这些是从 event.5eplay.com 扒下来的 webpack bundle，仅用于本地静态分析。
+# 版权归 5E 对战平台所有，不随本仓库分发。
+chunks/
+*.chunk.js
+
+# 抓下来的原始响应（体积大，可自行复现）
+raw/
+*.raw.json
