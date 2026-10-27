@@ -201,7 +201,7 @@ grep -o 'wss://[^"'"'"']*' chunks/*.js | sort -u
 grep -o 'mqtt[^,;)]\{0,60\}' chunks/*.js | sort -u
 ```
 
-能挖到 broker 地址和 `clientId` 的生成规则。握手细节见 [endpoints.md 2.6](endpoints.md)（§2.6）。
+能挖到 broker 地址和 `clientId` 的生成规则。握手细节见 [endpoints.md 2.6 实时推送](endpoints.md#26-实时推送mqtt-over-wss-已打通)。
 
 > 经验：**凡是响应里出现 `topic` / `channel` / `ver` / `cursor` 这类字段，都说明还有一条推送或增量通道没找。** 顺着字段名去 chunk 里搜，命中率很高。
 

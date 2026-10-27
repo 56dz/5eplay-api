@@ -27,7 +27,7 @@ curl -s -X POST 'https://app.5eplay.com/api/csgo/tournament/csgo_event_list_v1' 
 
 翻页要 `cursor` + `page_token` **配对**：`cursor` 取 `"next"` / `"prev"`，`page_token` 取上一页最后一条的 `page_token`（格式 `"2026-10-25 00:00:00,csgo_tt_9463"`）。只传 `page_token` 不起来作用（会原样返回第一页）。
 
-详见 endpoints.md 5.1（[endpoints.md](endpoints.md) §5.1）。
+详见 [endpoints.md 5.1](endpoints.md#51-赛事列表--真正的批量接口post走-app5eplaycom)。
 
 **另外补到的**：`GET /v1/api/csgo/tournaments/match_list?tt_ids=csgo_tt_8050` 一次返回该赛事全部 **41 场**比赛，结构与比赛列表页完全一致。
 
@@ -54,7 +54,7 @@ curl -s --socks5-hostname 127.0.0.1:10808 \
 
 `limit` 没有硬上限，实测 200 也照常返回（建议 ≤ 50）。
 
-详见 endpoints.md 6.3（[endpoints.md](endpoints.md) §6.3）。
+详见 [endpoints.md 6.3](endpoints.md#63-队伍近期比赛--已解status-是字符串枚举)。
 
 ---
 
@@ -81,7 +81,7 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 
 前端默认值是一串乱码 `ȫ������`（GBK 被当 latin1 解出来的「全部地区」），实测等价于空字符串 —— 别照抄。
 
-详见 endpoints.md 8（[endpoints.md](endpoints.md) §8）。
+详见 [endpoints.md 8](endpoints.md#8-世界排名--vrs--必须-post)。
 
 ---
 
@@ -94,7 +94,7 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 - `/matches/{id}/data` 响应里的 `eplus_realtime_topic` 就是订阅 topic
 - 官方前端根本不做轮询，比赛进行中全靠推送
 
-已完整打通链路（握手 / topic / 消息结构），详见 endpoints.md 2.6（[endpoints.md](endpoints.md) §2.6）。
+已完整打通链路（握手 / topic / 消息结构），详见 [endpoints.md 2.6](endpoints.md#26-实时推送mqtt-over-wss-已打通)。
 
 对流量敏感的设备（比如手表），推荐：**首次全量 → 之后只订阅 MQTT → 断线再全量重拉**。
 
@@ -102,7 +102,7 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 
 ## ✅ 已解决：完整 ban/pick 序列
 
-在 `GET /matches/{id}/data` 的 `data.match.global_state.bp_map_item[]` 里，7 条（BO3），`bp_type` 为 `ban` / `pick` / `left`。已结束和进行中的比赛都有。详见 endpoints.md 2.4（[endpoints.md](endpoints.md) §2.4）。
+在 `GET /matches/{id}/data` 的 `data.match.global_state.bp_map_item[]` 里，7 条（BO3），`bp_type` 为 `ban` / `pick` / `left`。已结束和进行中的比赛都有。详见 [endpoints.md 2.4](endpoints.md#24-global_state--全局状态含-banpick-序列)。
 
 ---
 

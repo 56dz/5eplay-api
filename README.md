@@ -95,23 +95,23 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 
 | 你想做… | 看这一节 |
 | --- | --- |
-| 比赛列表页 | 1. 比赛列表（[endpoints.md](docs/endpoints.md) §1） |
-| 比赛详情 / 比分板 | 2. 比赛详情（[endpoints.md](docs/endpoints.md) §2） |
-| 实时比分（比赛进行中） | 2.6 MQTT over WSS（[endpoints.md](docs/endpoints.md) §2.6） |
-| 逐回合回放 | 3. 逐回合流水（[endpoints.md](docs/endpoints.md) §3） |
-| 赛事列表页 | 5.1 赛事列表（[endpoints.md](docs/endpoints.md) §5.1） |
-| 赛事详情 / 对阵图 | 5.2（[endpoints.md](docs/endpoints.md) §5.2） / 5.3（[endpoints.md](docs/endpoints.md) §5.3） |
-| 赛事奖金分配 | 5.1quater（[endpoints.md](docs/endpoints.md) §5.1quater） |
-| 赛事赛程 / 赛果列表 | 5.6（[endpoints.md](docs/endpoints.md) §5.6） |
-| 队伍详情页 | 6.5（[endpoints.md](docs/endpoints.md) §6.5） / 6.7（[endpoints.md](docs/endpoints.md) §6.7） |
-| 队伍近期比赛 | 6.3（[endpoints.md](docs/endpoints.md) §6.3） |
-| 队伍地图总览 | 6.9（[endpoints.md](docs/endpoints.md) §6.9） |
-| 选手详情页 | 7.3 选手详情（[endpoints.md](docs/endpoints.md) §7.3） |
-| 选手数据 tab | 7.4（[endpoints.md](docs/endpoints.md) §7.4） |
-| 选手近期比赛 | 7.9（[endpoints.md](docs/endpoints.md) §7.9） |
-| 自定义指标排行（按 ADR/KAST 等排序） | 7.10（[endpoints.md](docs/endpoints.md) §7.10） |
-| 世界排名 / VRS | 8. 世界排名（[endpoints.md](docs/endpoints.md) §8） |
-| 赛事内队/选手/地图统计 | 9. 赛事维度统计（[endpoints.md](docs/endpoints.md) §9） |
+| 比赛列表页 | [1. 比赛列表](docs/endpoints.md#1-比赛列表) |
+| 比赛详情 / 比分板 | [2. 比赛详情](docs/endpoints.md#2-比赛详情--核心) |
+| 实时比分（比赛进行中） | [2.6 MQTT over WSS](docs/endpoints.md#26-实时推送mqtt-over-wss-已打通) |
+| 逐回合回放 | [3. 逐回合流水](docs/endpoints.md#3-逐回合流水) |
+| 赛事列表页 | [5.1 赛事列表](docs/endpoints.md#51-赛事列表--真正的批量接口post走-app5eplaycom) |
+| 赛事详情 / 对阵图 | [5.2 赛事详情](docs/endpoints.md#52-赛事详情) / [5.3 赛程对阵图](docs/endpoints.md#53-赛事赛程--对阵图--可解析) |
+| 赛事奖金分配 | [5.1quater 奖金分配](docs/endpoints.md#51quater-赛事奖金分配team_rank) |
+| 赛事赛程 / 赛果列表 | [5.6 赛程与赛果](docs/endpoints.md#56-赛事赛程--赛果app5eplaycom) |
+| 队伍详情页 | [6.5 队伍详情页](docs/endpoints.md#65-队伍详情页接口) / [6.7 队伍数据统计](docs/endpoints.md#67-队伍数据统计team_overview--地图池) |
+| 队伍近期比赛 | [6.3 队伍近期比赛](docs/endpoints.md#63-队伍近期比赛--已解status-是字符串枚举) |
+| 队伍地图总览 | [6.9 队伍地图总览](docs/endpoints.md#69-队伍地图总览一次拿三块地图数据) |
+| 选手详情页 | [7.3 选手详情](docs/endpoints.md#73-选手详情--一个接口拿全) |
+| 选手数据 tab | [7.4 选手统计](docs/endpoints.md#74-选手统计带同位置对比区间) |
+| 选手近期比赛 | [7.9 选手近期比赛](docs/endpoints.md#79-选手近期比赛--可翻页可筛选) |
+| 自定义指标排行（按 ADR/KAST 等排序） | [7.10 选手多维对比](docs/endpoints.md#710-选手多维对比--自定义排序榜) |
+| 世界排名 / VRS | [8. 世界排名 / VRS](docs/endpoints.md#8-世界排名--vrs--必须-post) |
+| 赛事内队/选手/地图统计 | [9. 赛事维度统计](docs/endpoints.md#9-赛事维度统计队--选手--地图) |
 
 ## 示例脚本
 
