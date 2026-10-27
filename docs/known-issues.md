@@ -42,36 +42,48 @@ curl -s 'https://esports-data.5eplaycdn.com/v1/api/csgo/team/matches_v1/csgo_tm_
 
 ---
 
-## 🟡 中：`bouts_state[].bp_act` 只有单值
+## ✅ 已解决：完整 ban/pick 序列
 
-只看到 `"t2_pick"`，没有完整的 ban/pick 序列（谁先 ban、ban 了什么图）。
-
-完整序列可能在：
-- `global_state` 里的某个字段
-- `stages` 接口的 `graph` 里
-- `/matches/{id}/analysis_v1`（未验证）
+在 `GET /matches/{id}/data` 的 `data.match.global_state.bp_map_item[]` 里，7 条（BO3），`bp_type` 为 `ban` / `pick` / `left`。已结束和进行中的比赛都有。详见 [endpoints.md 2.4](endpoints.md#24-global_state--全局状态含-banpick-序列)。
 
 ---
 
-## 🟡 中：加时赛结构未验证
+## ✅ 已解决：加时赛结构（19:16 实测）
 
-`t1_stats.ot_data` / `ot_score` / `ot_role` 字段存在，但没找到一场加时的比赛来验证结构。
+用 `csgo_mc_2399119` 的 Inferno（19:16，两次加时）实测：
 
-手上已知比赛的比分都是常规时间结束。
+```json
+"quick_score": "19",   // 最终总分，含加时
+"sh_score":   "6",     // 上半场
+"sh_role":    "CT",
+"sh_data":    [0,1,1,1,1,1,0,0,4,0,0,0],   // 12 个分段（每 3 回合一段）
+"fh_score":   "6",     // 下半场
+"fh_data":    [0,3,2,3,0,0,0,0,2,0,3,2],
+"ot_score":   "7",     // 加时得分 = 19 - 6 - 6
+"ot_role":    "",
+"ot_data":    [0,0,0,2,3,2,0,3,2,1,1,0],
+"all_score":  "19",
+"flags":      ["w10"]
+```
+
+结论：
+
+- `sh_score + fh_score + ot_score == quick_score`（6+6+7=19 ✅）
+- `ot_data` 是逐步累加序列，长度为 **6 × 2 = 12**（两个 OT 各 6 回合），两边 `ot_data` 互补（t1 赢的分 = t2 没赢的分）
+- `ot_role` 为空字符串，不用管
+- `flags` 是给前端画棋子/徽标用的标记（`w10` = 10 连胜？），非核心
+
+所以解析时：**上半场 `sh_score` / 下半场 `fh_score` / 加时 `ot_score`** 三段分开读，`quick_score` 为总分。
 
 ---
 
-## 🟢 低：`/matches/{id}/data` 是否支持增量
+## 🟢 低：`/matches/{id}/data` 的增量参数
 
-试过 `?update_version=0` 之类的参数，没看出差别。每次都是全量 60–120 KB。
+实测传 `?state_ver=` / `?local_ver=` **响应体积不变**（都是全量 60–125 KB）。
 
-对于手表这类流量敏感的设备是个负担。**待解**：有没有 `?since=` / `?ver=` 这类增量参数。
+但响应里有 `eplus_realtime_topic` 字段，说明官方用 WebSocket 推送增量。WS 协议未逆向。
 
----
-
-## 🟢 低：`global_state` 未逐字段梳理
-
-里面字段很多（`avg_player_stats`、`ana_map_desc_flag`、各种 map 描述），目前只确认了 `avg_player_stats` 是全队平均。
+对于手表这类流量敏感的设备，目前只能靠**本地缓存 + 降频轮询**。
 
 ---
 

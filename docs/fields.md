@@ -49,6 +49,32 @@
 | 选图动作 | `bouts_state[].bp_act` | `"t2_pick"` |
 | 回合数 | `bouts_state[].round_num` | `"22"` |
 
+## 比赛详情 — ban/pick 序列
+
+来源：`data.match.global_state.bp_map_item[]`（BO3 共 7 条，顺序即实际操作顺序）
+
+| 用途 | 字段 | 示例值 |
+| --- | --- | --- |
+| 动作 | `bp_type` | `ban` / `pick` / `left` |
+| 地图 | `map_name` | `"Ancient"` |
+| 谁操作 | `team_side` | `t1` / `t2` / `""`（left 时为空） |
+| 地图图标 | `map_icon` | `https://...` |
+| 地图背景 | `map_logo` | `https://...` |
+
+## 比赛详情 — 地图池对比
+
+来源：`GET /v1/api/csgo/matches/{id}/analysis_v1` → `data.result.comparison.team_map_stats[]`
+
+| 用途 | 字段 | 示例值 |
+| --- | --- | --- |
+| 地图英文 | `name` | `Ancient` |
+| 地图中文 | `name_zh` | `远古遗迹` |
+| 选图方 | `bp_type` | `t2_pick` |
+| T1 选择率 | `t1_pick_rate` | `"8"`（%） |
+| T1 ban 率 | `t1_ban_rate` | `"26"` |
+| T1 胜场 | `t1_win_num` | `"15"` |
+| T1 胜率 | `t1_rate` | `"60"` |
+
 ## 比赛详情 — 选手（单图）
 
 来源：`bouts_state[].t1_pr_stats[]` / `t2_pr_stats[]`
