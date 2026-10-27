@@ -25,7 +25,7 @@
 | `/csgo/events` 赛事 | 赛事列表（可翻页）、赛事详情、**赛程对阵图**（含服务端算好的节点坐标）、**奖金分配**、赛程/赛果列表（可翻页）、参赛队伍 / 选手 / 地图三套维度统计（78 个选手字段） |
 | `/csgo/teams` 队伍 | 队伍搜索、队伍榜单（20+ 统计字段可排序）、队伍详情、荣誉墙、**近期比赛**（`status=past`）、地图池与地图三块总览、选手名单 |
 | `/csgo/player` 选手 | 选手搜索、Rating 榜 / 总奖金榜、**任意指标排序的自定义榜**、选手详情（生涯 + 外设配置）、地图/武器/残局三套统计、**近期比赛（可翻页+按赛事/地图/等级筛）**、同位置百分位对比 |
-| 世界排名 | **5E 世界排名**（328 队）与 **Valve VRS**（377 队），支持按地区筛选 |
+| 世界排名 | **HLTV 世界排名**（328 队）与 **Valve VRS**（377 队），支持按地区筛选（5E 自己不发布排名） |
 
 这些数据网页上都渲染了，只是没公开文档。本项目把接口整理出来，方便写客户端、做数据看板、喂给 AI agent。
 
@@ -114,7 +114,7 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 | 选手数据 tab | [7.4 选手统计](docs/endpoints.md#74-选手统计带同位置对比区间) |
 | 选手近期比赛 | [7.9 选手近期比赛](docs/endpoints.md#79-选手近期比赛--可翻页可筛选) |
 | 自定义指标排行（按 ADR/KAST 等排序） | [7.10 选手多维对比](docs/endpoints.md#710-选手多维对比--自定义排序榜) |
-| 世界排名 / VRS | [8. 世界排名 / VRS](docs/endpoints.md#8-世界排名--vrs--必须-post) |
+| 世界排名 / VRS | [8. 世界排名（HLTV / VRS）](docs/endpoints.md#8-世界排名hltv-积分榜--valve-vrs-必须-post) |
 | 赛事内队/选手/地图统计 | [9. 赛事维度统计](docs/endpoints.md#9-赛事维度统计队--选手--地图) |
 
 ## 示例脚本
@@ -146,7 +146,7 @@ python tools/probe.py player-matches csgo_pl_11893    # 选手近期比赛
 python tools/probe.py player-top --sort-key adr       # 任意指标排行
 
 # —— 排名 ——
-python tools/probe.py rank                            # 5E 世界排名
+python tools/probe.py rank                            # HLTV 世界排名
 python tools/probe.py vrs                             # Valve VRS 榜
 ```
 

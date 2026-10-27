@@ -58,7 +58,7 @@ curl -s \
 
 ---
 
-## ✅ 已解决：世界排名 / VRS 找不到（原 🟡 中）
+## ✅ 已解决：世界排名 / VRS 找不到（原 🟡 中）—— 且它不是「5E 榜」
 
 **结论：路径没变，是 `/v1/api/csgo/new/rank/team_list`，但必须 `POST`。`GET` 一律 `404 page not found`。**
 
@@ -74,8 +74,11 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 
 | `rank_type` | `sort_key` | 榜 | `total_rows` |
 | --- | --- | --- | --- |
-| `rank` | `rank` | 5E 世界排名 | **328** |
+| `rank` | `rank` | **HLTV 世界排名**（积分榜，不是 5E 榜） | **328** |
 | `valve_rank` | `valve_rank` | Valve VRS | **377** |
+
+> 更正：早先这里写的「5E 世界排名」是错的。5E 不发布排名，`rank` 就是 HLTV 积分榜。
+> item 里 `rank`/`point` 与 `valve_rank`/`valve_point` 并列存在，取值要和 `rank_type` 对上。
 
 `region` 传**中文**（`""` 全球 328 / `欧洲` 182 / `亚洲` 35 / `美洲` 69 / `中国` 0 / `大洋洲` 0）。20 条/页。
 

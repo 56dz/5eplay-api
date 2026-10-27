@@ -40,7 +40,7 @@ Base URL：
 | 赛事赛程（app） | `?tt_ids=csgo_tt_8251&limit=20` | ~~`?tt_id=22819`~~（不过滤） |
 | 赛事赛果（app） | `?page_size=20&page_token=...` | ~~`?page=2&limit=20`~~（无效） |
 | 选手近期比赛 | body 里 `"time_value":"<起点>_<终点>"` | ~~`~` 连接~~ / ~~留空~~（`time_value验证错误`） |
-| 世界排名 | `POST` + `rank_type` 与 `sort_key` 同时改 | ~~只改 `sort_key`~~ |
+| 世界排名 | `POST` + `rank_type` 与 `sort_key` 同时改（`rank`=HLTV，`valve_rank`=VRS） | ~~只改 `sort_key`~~ |
 
 ---
 
@@ -2071,7 +2071,7 @@ body 同 7.4（`player_options`，不需要 `page`）。返回比 7.7 `camp/stat
 与 7.7 的差别：7.7 的 `final_data` 是**生涯累计**，这个接口吃 `player_options` 的时间/赛事/地图筛选。
 
 ---
-## 8. 世界排名 / VRS ★ 必须 POST
+## 8. 世界排名（HLTV 积分榜 / Valve VRS）★ 必须 POST
 
 **`GET` 这个路径一律 `404 page not found`** —— 这就是之前一直找不到的原因。
 
@@ -2094,7 +2094,7 @@ Content-Type: application/json
 ```
 
 ```bash
-# 5E 世界排名
+# HLTV 世界排名（积分榜）
 curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_list' \
   -H 'Content-Type: application/json' \
   -d '{"sort_value":"desc","rank_type":"rank","sort_key":"rank","region":"",
@@ -2109,14 +2109,25 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
        "time_type":"","tt_series":[],"maps":[],"page":1}}'
 ```
 
-### 两套榜
+### 两套榜（都不是 5E 自己的榜）
 
 | `rank_type` | `sort_key` | 榜 | 实测 `total_rows` |
 | --- | --- | --- | --- |
-| `rank` | `rank` | 5E 世界排名 | **328** |
-| `valve_rank` | `valve_rank` | Valve VRS | **377** |
+| `rank` | `rank` | **HLTV 世界排名**（积分榜） | **328** |
+| `valve_rank` | `valve_rank` | **Valve VRS**（官方地区积分） | **377** |
 
 两者**必须同时改**，只改一个会返回另一套榜或空。20 条/页，`total_page` 分别是 17 / 19。
+
+> ⚠️ **`rank` 不是「5E 世界排名」** —— 5E 平台本身不发布排名。`rank_type: "rank"` 拿到的
+> 就是 **HLTV 世界排名积分**（`point`），和 5E 无关。前端顶部切换器写的是
+> 「V社排名 / HLTV排名」（见 `1299.js`），从来不是「5E榜」。
+>
+> 同一个 item 里两套榜的字段是**并列**的：`rank` / `point` 属于 HLTV，
+> `valve_rank` / `valve_point` 属于 VRS。服务端按你传的 `sort_key` 排序，但
+> **显示的序号和积分必须取对应的那一对字段**，否则 VRS 榜会拿 HLTV 的名次去渲染，
+> 出现「1 2 3 4 5」的顺序却配着乱序的分数。实测 page=1：
+> `rank_type:"rank"` → Spirit 904 / Vitality 898 / FURIA 691；
+> `rank_type:"valve_rank"` → Vitality 1990 / MOUZ 1940 / Spirit 1927。
 
 ### `region` 枚举（实测）
 

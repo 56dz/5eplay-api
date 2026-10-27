@@ -170,13 +170,21 @@
 
 `POST /v1/api/csgo/new/rank/team_list` 的 `field_values`：
 
+**两套榜共用一个 item，字段并列**：`rank`/`point`/`score` = HLTV 世界排名，
+`valve_rank`/`valve_point` = Valve VRS。5E 自己**没有**排名，别把 `rank` 当成 5E 榜。
+
 | 用途 | 字段 | 示例 |
 | --- | --- | --- |
-| 名次 | `rank` / `global_rank` | `1` |
-| 积分 | `point` / `score` | `904`（两者相同，取 `point`） |
+| HLTV 名次 | `rank` / `global_rank` | `1` |
+| HLTV 积分 | `point` / `score` | `904`（两者相同，取 `point`） |
+| VRS 名次 | `valve_rank` | `3` |
+| VRS 积分 | `valve_point` | `1928` |
 | 名次变化 | `rank_change` / `rank_diff` | `"-"`（字符串，无变化时是横杠） |
 | 分区 | `region_name` | `欧洲` |
 | 击杀差 | `kd_diff` | `11214` |
+
+> 实测同一支队伍（Spirit）：`rank=1 point=904` 而 `valve_rank=3 valve_point=1928` ——
+> 两套榜口径完全不同，按 `rank_type` 取对应的那一对。
 
 > 其余 `avg_kill` / `rating` / `ct_win_rate` 等字段在默认 body 下**全是空字符串**，只有加 `time_type`/`time_value` 过滤才会填。别当 0 排序。
 
