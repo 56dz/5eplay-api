@@ -80,6 +80,8 @@ curl -s -X POST 'https://esports-data.5eplaycdn.com/v1/api/csgo/new/rank/team_li
 
 > 三个域名**都不需要代理**，直连即可。实测在智能手表（Android 8.1，OPPO Watch 2）上三个域名全部直连 200，无需任何代理。
 >
+> 又在 Windows + 家用宽带（开 VPN）、以及随身 Wi-Fi（开 VPN）两种网络下复测，直连同样全部可用：`esports-data` 200、`app.5eplay.com` 的 POST 接口 200、`oss` 的具体图片对象 200。（`oss` 直接请求域名根路径会返回 403，属正常，取具体对象即可。）
+>
 > 如果你的网络环境特殊（例如校园网屏蔽游戏类站点），需要的话再自备代理，本项目本身不依赖代理。文档里的 curl 示例一律按直连写。
 
 ## 文档
