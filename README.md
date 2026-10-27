@@ -168,4 +168,4 @@ python tools/probe.py --proxy socks5h://127.0.0.1:10808 matches --status 2
 
 ## License
 
-文档与脚本采用 [MIT](LICENSE)。接口与数据本身不属于本项目。
+文档与脚本采用 [GPL-3.0](LICENSE)。接口与数据本身不属于本项目，也不受本许可证约束。
